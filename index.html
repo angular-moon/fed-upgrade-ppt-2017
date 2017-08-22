@@ -4,10 +4,10 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>es2015+</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/moon.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -24,8 +24,19 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section data-external="es2015+/TC39-process.html"></section>
+				<section>
+                    <h1>es2015+ 常用特性讲解</h1>
+                    <h3>更多细节参考:
+                        <p>
+                            <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript">MDN Web docs</a>
+                        </p>
+                        <p>
+                            <a href="http://es6.ruanyifeng.com/">ECMAScript 6 入门 (该PPT讲解内容几乎都来自此处)</a>
+                        </p>
+                    </h3>
+                </section>
+                <section data-external="es2015+/let-and-const.html"></section>
 			</div>
 		</div>
 
@@ -37,11 +48,23 @@
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
-				dependencies: [
+                width: "90%",
+                height: "90%",
+                margin: 0,
+                minScale: 1,
+                maxScale: 1,
+                transition: 'convex',
+                // Display the page number of the current slide
+                slideNumber: true,
+                // Push each slide change to the browser history
+                history: true,
+                dependencies: [
+                    { src: 'plugin/external/external.js', condition: function() { return !!document.querySelector( '[data-external]' ); } },
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true },
 				]
 			});
 		</script>

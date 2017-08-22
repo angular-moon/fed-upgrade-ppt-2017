@@ -1385,3 +1385,10 @@ body {
 
 .zoomed .reveal .roll span:after {
   visibility: hidden; }
+
+/*********************************************
+ * custom
+ *********************************************/
+.text-left{
+    text-align: left;
+}
