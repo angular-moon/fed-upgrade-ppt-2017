@@ -1,0 +1,86 @@
+<section data-markdown>
+    <textarea data-template>
+        ### ES6 允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构（Destructuring）。
+        #### 本质上，这种写法属于“模式匹配”，只要等号两边的模式相同，左边的变量就会被赋予对应的值。
+	</textarea>
+</section>
+<section data-markdown>
+    <textarea data-template>
+        #### 1.函数参数的定义
+        ```javascript
+        /**
+         * react component
+         * <Welcome name="moon"></Welcome>
+         **/
+
+        function Welcome(props) {
+            return <h1>Hello, {props.name}</h1>;
+        }
+
+        //解构参数
+        function Welcome({name}) {
+            return <h1>Hello, {name}</h1>;
+        }
+        ```
+	</textarea>
+</section>
+<section data-markdown>
+    <textarea data-template>
+        #### 2.提取json
+        ```javascript
+        let jsonData = {
+          id: 42,
+          status: "OK",
+          data: [867, 5309]
+        };
+
+        // 匹配data, 赋值给number
+        let { id, data: number } = jsonData;
+
+        console.log(id, number);
+        // 42, [867, 5309]
+        ```
+	</textarea>
+</section>
+<section data-markdown>
+    <textarea data-template>
+        #### 3.函数返回多个值
+        ```javascript
+        function example() {
+          return {
+            foo: 1,
+            bar: 2
+          };
+        }
+        let { foo, bar } = example();
+        ```
+	</textarea>
+</section>
+<section data-markdown>
+    <textarea data-template>
+        #### 4.输入模块的指定方法
+        ```javascript
+        // 现在一般使用import 语法类似
+        const { SourceMapConsumer, SourceNode } = require("source-map");
+        ```
+	</textarea>
+</section>
+<section data-markdown>
+    <textarea data-template>
+        #### 5.遍历map
+        ```javascript
+        const map = new Map([
+          ['name', '张三'],
+          ['title', 'Author']
+        ]);
+
+        for (let [key, value] of map) {
+          console.log(key + " is " + value);
+        }
+        // name is 张三
+        // title is Author
+        ```
+	</textarea>
+</section>
+
+
