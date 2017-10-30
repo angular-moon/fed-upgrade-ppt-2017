@@ -2,7 +2,6 @@
     <textarea data-template>
         ### 使用 let 和 const 代替 var
         #### let 为 JavaScript 新增了块级作用域。
-
         ```javascript
         {
           let a = 10;
@@ -62,8 +61,7 @@
         var tmp = 123;
         if (true) {
           _tmp = 'abc';
-          var _tmp = void 0;
-          console.log(_tmp);
+          var _tmp = void 0; // undefined
         }
         ```
     </textarea>
