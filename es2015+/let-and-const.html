@@ -22,6 +22,35 @@
 </section>
 <section data-markdown>
     <textarea data-template>
+        #### 块级作用域 代替 闭包
+        ```javascript
+        for(var i=0; i<3; i++){
+          setTimeout(function(){
+            console.log(i); //print second 3 3 3
+          })
+        }
+
+        console.log(i); //print first 3
+
+        for(let j=0; j<3; j++){
+          setTimeout(function(){
+            console.log(j); //print last 0, 1, 2
+          })
+        }
+
+        console.log(j); // ReferenceError: j is not defined.
+
+        // 闭包
+        for(var i=0; i<3; i++){
+          setTimeout((function(i){
+            return function(){ console.log(i); }
+          })(i))
+        }
+        ```
+    </textarea>
+</section>
+<section data-markdown>
+    <textarea data-template>
         ### 不存在变量提升
 
         ```javascript
@@ -52,16 +81,16 @@
         var tmp = 123;
 
         if (true) {
-          tmp = 'abc'; // ReferenceError
-          let tmp;
+            tmp = 'abc'; // ReferenceError
+            let tmp;
         }
         ```
         ```javascript
         // babel compile
         var tmp = 123;
         if (true) {
-          _tmp = 'abc';
-          var _tmp = void 0; // undefined
+             _tmp = 'abc';
+            var _tmp = void 0; // undefined
         }
         ```
     </textarea>
@@ -98,7 +127,7 @@
         var constantize = (obj) => {
           Object.freeze(obj);
           Object.keys(obj).forEach( (key, i) => {
-            if ( typeof obj[key] === 'object' ) {
+            if(typeof obj[key] === 'object') {
               constantize( obj[key] );
             }
           });
@@ -107,6 +136,3 @@
         #### 可能用到的地方: 开发时检查, 在使用redux时, 是否使用了可变对象.
     </textarea>
 </section>
-
-
-
