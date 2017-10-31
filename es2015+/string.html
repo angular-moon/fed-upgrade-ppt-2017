@@ -43,3 +43,106 @@
         ```
 	</textarea>
 </section>
+<section data-markdown>
+     <textarea data-template>
+        ### 嵌入表达式
+        ```javascript
+        let x = 1;
+        let y = 2;
+         function getZ() {
+            return 3;
+         }
+
+        let equation = `${x} + ${y} = ${x + y}`
+        // "1 + 2 = 3"
+
+        equation = `${x} + ${y * getZ()} = ${x + y * getZ()}`
+        // "1 + 6 = 7"
+        ```
+	</textarea>
+</section>
+<section data-markdown>
+     <textarea data-template>
+        ### 标签模板（tagged template）
+        #### 标签模板其实不是模板，而是函数调用的一种特殊形式。“标签”指的就是函数，紧跟在后面的模板字符串就是它的参数。
+        #### 如何使用, 取决于你的想象力
+        ```javascript
+        let a = 5;
+        let b = 10;
+
+        tag`Hello ${ a + b } world ${ a * b }`;
+        // 等同于, 注意最后的空字符串
+        tag(['Hello ', ' world ', ''], 15, 50);
+
+        // 函数tag依次会接收到多个参数
+        function tag(literals, value1, value2){
+          // ...
+        }
+
+        // 等同于
+        function tag(literals, ...values){
+          // ...
+        }
+        ```
+	</textarea>
+</section>
+<section data-markdown>
+     <textarea data-template>
+        ### 例子, 过滤用户输入
+        ```javascript
+        function SaferHTML(literals, ...values) {
+          let output = "";
+          let i;
+          for (i = 0; i < values.length; i++) {
+            output = literals[i] +
+              values[i]
+              .replace(/&/g, "&amp;amp;")
+              .replace(/</g, "&amp;lt;")
+              .replace(/>/g, "&amp;gt;");
+          }
+          return output + literals[i];
+        }
+
+        let sender = '<script>alert("abc")</script>'; // 恶意代码
+        let message = SaferHTML`<p>${sender} has sent you a message.</p>`;
+
+        // <p>&amp;lt;script&amp;gt;alert("abc")&amp;lt;/script&amp;gt; has sent you a message.</p>
+        ```
+	</textarea>
+</section>
+<section data-markdown>
+     <textarea data-template>
+        ### 元编程, 在 javascript 中嵌入其他语言
+        ```javascript
+         // 将一个DOM字符串编译React对象
+        jsx`<div>
+          <input
+            ref='input'
+            onChange='${this.handleChange}'
+            defaultValue='${this.state.value}' />
+            ${this.state.value}
+          </div>
+        `
+
+         // 结果
+         React.createElement(
+          'div',
+          null,
+          React.createElement('input', {
+            ref: 'input',
+            onChange: '${this.handleChange}',
+            defaultValue: '${this.state.value}' }),
+          '$',
+          this.state.value
+        );
+        ```
+	</textarea>
+</section>
+<section data-markdown>
+     <textarea data-template>
+         ### 超有想象力的 css in js 方案, styled-components
+         #### https://www.styled-components.com/
+         ![](/img/styled-component.png)
+	</textarea>
+</section>
+
