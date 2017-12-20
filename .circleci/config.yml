@@ -27,7 +27,7 @@ jobs:
           command: npm install
       - run:
           name: install grunt-cli
-          command: npm install -g grunt-cli
+          command: 'sudo npm install -g grunt-cli'
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
