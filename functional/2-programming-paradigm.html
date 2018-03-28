@@ -1,0 +1,53 @@
+<section>
+  <h2>Programming paradigm | 编程范式</h1>
+    <h4>根据编程语言的特点对编程语言进行分类的一种方法</h4>
+    <br/>
+    <h4>常见的范式:</h4>
+    <code>命令式, 声明式, 面向对象, 函数式</code>
+</section>
+<section>
+  <h3>命令式</h3>
+  <hr style="border-color: darkslategrey;">
+  <p>指明操作发生的顺序，显式控制顺序的构造，允许副作用。</p>
+</section>
+<section>
+  <h3>声明式</h3>
+  <hr style="border-color: darkslategrey;">
+  <p>没有指明操作执行的顺序，描述期望得到的结果。</p>
+  <p>例如 sql, html</p>
+</section>
+<section>
+  <h3>面向对象</h3>
+  <hr style="border-color: darkslategrey;">
+  <p>使用由数据字段和方法组成的数据结构及其交互（对象）来设计程序。</p>
+  <p>大多数面向对象语言也是命令式语言。</p>
+</section>
+<section>
+  <h3>函数式</h3>
+  <hr style="border-color: darkslategrey;">
+  <p>使用数学函数的组合，并避免副作用。</p>
+  <P>大多数函数式语言也是声明式语言。</p>
+</section>
+
+<section data-markdown>
+  <textarea data-template>
+      ### 声明式示例: 二叉树镜像反转
+      ```haskell
+      /* haskell */
+
+      data Tree a = Nil | Node a (Tree a) (Tree a)
+           deriving (Show, Eq)
+      
+      invert :: Tree a -> Tree a
+      invert Nil = Nil
+      invert (Node v l r) = Node v (invert r) (invert l)
+      ```
+  </textarea>
+</section>
+<section>
+  <h4>现代语言大多都是多范式的</h4>
+  <hr style="border-color: hotpink">
+  <p>考虑到没有一种范式能以最简单或最有效的方式解决所有问题</p>
+  <p>这样的语言的设计目标是允许程序员为一个给定的工作</p>
+  <p>使用最合适的编程风格和相关的语言结构</p>
+</section>

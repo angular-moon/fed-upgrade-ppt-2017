@@ -1,84 +1,88 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>es2015+</title>
+<head>
+	<meta charset="utf-8">
+	<!-- <meta http-equiv="refresh" content="0;url=/functional.html"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/moon.css">
+	<title>es2015+</title>
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/moon.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-                <section>
-                    <h2>大致的安排, 越靠后的讲解的必要性越低</h2>
-                    <span>esnext</span> ->
-                    <span>函数编程入门的入门</span> ->
-                    <span>react</span> ->
-                    <span>redux</span> ->
-                    <span>react-router</span> ->
-                    <span>styled-components</span>
-                </section>
-                <section data-external="es2015+/why-javascript.html"></section>
-				<section data-external="es2015+/TC39-process.html"></section>
-				<section>
-                    <h1>esnext 常用新增内容讲解</h1>
-                    <h3>更多细节参考:
-                        <p>
-                            <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript">MDN Web docs</a>
-                        </p>
-                        <p>
-                            <a href="http://es6.ruanyifeng.com/">ECMAScript 6 入门 (该PPT讲解内容几乎都来自此处)</a>
-                        </p>
-                    </h3>
-                </section>
-                <section data-external="es2015+/let-and-const.html"></section>
-                <section data-external="es2015+/destructuring.html"></section>
-                <section data-external="es2015+/string.html"></section>
-			</div>
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h2>大致的安排</h2>
+				<span>esnext</span> ->
+				<span>函数编程入门的入门</span> ->
+				<span>react</span> ->
+				<span>redux</span> ->
+				<span>react-router</span> ->
+				<span>styled-components</span>
+			</section>
+			<section data-external="es2015+/why-javascript.html"></section>
+			<section data-external="es2015+/TC39-process.html"></section>
+			<section>
+				<h1>esnext 常用新增内容讲解</h1>
+				<h3>更多细节参考:
+					<p>
+						<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript">MDN Web docs</a>
+					</p>
+					<p>
+						<a href="http://es6.ruanyifeng.com/">ECMAScript 6 入门 (该PPT讲解内容几乎都来自此处)</a>
+					</p>
+				</h3>
+			</section>
+			<section data-external="es2015+/let-and-const.html"></section>
+			<section data-external="es2015+/destructuring.html"></section>
+			<section data-external="es2015+/string.html"></section>
 		</div>
+	</div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-                width: "90%",
-                height: "90%",
-                margin: 0,
-                minScale: 1,
-                maxScale: 1,
-                transition: 'convex',
-                // Display the page number of the current slide
-                slideNumber: true,
-                // Push each slide change to the browser history
-                history: true,
-                dependencies: [
-                    { src: 'plugin/external/external.js', condition: function() { return !!document.querySelector( '[data-external]' ); } },
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-                    { src: 'plugin/zoom-js/zoom.js', async: true },
-				]
-			});
-		</script>
-	</body>
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+			width: "90%",
+			height: "90%",
+			margin: 0,
+			minScale: 1,
+			maxScale: 1,
+			transition: 'convex',
+			// Display the page number of the current slide
+			slideNumber: true,
+			// Push each slide change to the browser history
+			history: true,
+			dependencies: [
+				{ src: 'plugin/external/external.js', condition: function () { return !!document.querySelector('[data-external]'); } },
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+				{ src: 'plugin/zoom-js/zoom.js', async: true },
+			]
+		});
+	</script>
+</body>
+
 </html>
