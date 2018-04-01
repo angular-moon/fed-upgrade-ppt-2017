@@ -1,0 +1,58 @@
+<section>
+    <h3>
+        函数是第一公民 | function is first class
+    </h3>
+    <p class="fragment" style="margin-top:50px">
+        函数真没什么特殊的，你可以像对待任何其他数据类型一样对待它们
+    </p>
+    <p class="fragment" style="margin-top:50px">
+        换而言之，函数式语言中，我们不严格的区分数据和函数
+    </p>
+</section>
+<section>
+    <h4>提问: 如何定义一个pairs( [key, value] ) ?</h4>
+    <p style="font-size: 25px">lisp中用的最多的数据结构</p>
+</section>
+<section>
+    <h6>SICP video（Lec5b：计算对象）</h6>
+    <video width="600px" height="400px" data-src="/video/sicp_conds.mp4" controls="controls"></video>
+</section>
+<section>
+    <h5>CONDS, CAR, CDR</h5>
+    <iframe data-src="https://stackblitz.com/edit/lambda-conds?ctl=1&embed=1&file=index.js&hideExplorer=1" width="100%
+            " height="600px "></iframe>
+</section>
+<section>
+    <h3>
+        反例
+    </h3>
+    <p>
+        "这是 JavaScript 语言的基础概念，不过还是值得提一提的，因为在 Github 上随便一搜就能看到对这个概念的集体无视，或者也可能是无知。"
+    </p>
+</section>
+<section>
+    <h5>一个杜撰的例子</h5>
+    <pre><code>
+var hi = function(name) {
+    return "Hi " + name;
+};
+
+var greeting = function(name) {
+    return hi(name);
+};
+    </code></pre>
+</section>
+<section>
+    <h5>世界上到处都充斥着这样的垃圾 ajax 代码</h5>
+    <pre><code>
+// 太傻了
+var getServerStuff = function(callback){
+    return ajaxCall(function(json){
+        return callback(json);
+    });
+};
+
+// 这才像样
+var getServerStuff = ajaxCall;
+        </code></pre>
+</section>

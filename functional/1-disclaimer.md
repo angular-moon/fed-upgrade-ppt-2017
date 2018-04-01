@@ -1,4 +1,4 @@
-### 免责声明  |  disclaimer
+### 免(ren)责(song)声明  |  disclaimer
 <br/>
 <br/>
 #### 由于本人尚未入门, 内容中极有可能包含错误
