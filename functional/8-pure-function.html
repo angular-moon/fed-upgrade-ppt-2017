@@ -1,0 +1,109 @@
+<section>
+    <h3>纯函数 | pure function</h3>
+    <h6>纯函数是这样一种函数，即相同的输入，永远会得到相同的输出，而且没有任何可观察的副作用。</h6>
+    <p>函数式编程的哲学---副作用是一切bug产生的根源</p>
+</section>
+<section>
+    <h3>纯函数的本质</h3>
+    <h6>纯函数就是数学上的函数，而且是函数式编程的全部。</h6>
+    <div style="float: left; width: 50%">
+        <img src="/img/function-sets.gif" style="width:250px; height:165px">
+        <p style="font-size: 20px">函数关系</p>
+    </div>
+    <div style="float: right; width: 50%">
+        <img src="/img/relation-not-function.gif" style="width:250px; height:165px">
+        <p style="font-size: 20px">非函数关系</p>
+    </div>
+</section>
+<section>
+    <h6>副作用-函数改变了输入参数</h6>
+    <pre><code>
+var xs = [1,2,3,4,5];
+
+// 纯的
+xs.slice(0,3);  //=> [1,2,3]
+xs.slice(0,3);  //=> [1,2,3]
+xs.slice(0,3);  //=> [1,2,3]
+
+// 不纯的
+xs.splice(0,3); //=> [1,2,3]
+xs.splice(0,3); //=> [4,5]
+xs.splice(0,3); //=> []
+    </code></pre>
+</section>
+<section>
+    <h6>副作用-引用了全局变量</h6>
+    <pre><code>
+// 不纯的
+var minimum = 21;
+var checkAge = function(age) {
+  return age >= minimum;
+};
+
+// 纯的
+var checkAge = function(age) {
+  var minimum = 21;
+  return age >= minimum;
+};
+    </code></pre>
+</section>
+<section>
+    <h3>副作用 | side effect</h3>
+    <h6>副作用是在计算结果的过程中，系统状态的一种变化，或者与外部世界进行的可观察的交互。</h6>
+</section>
+<section>
+    <h6>副作用可能包含，但不限于：</h6>
+    <ul>
+        <li>更改文件系统</li>
+        <li>往数据库插入记录</li>
+        <li>发送一个 http 请求</li>
+        <li>可变数据</li>
+        <li>打印/log</li>
+        <li>获取用户输入</li>
+        <li>DOM 查询</li>
+        <li>访问系统状态</li>
+    </ul>
+</section>
+<section>
+    <h3>副作用的本质</h3>
+    <h6>副作用本质上是函数的一种不可见的（invisible）输入或输出。</h6>
+    <p class="fragment">
+        副作用不可能被消灭, 但可以控制。
+    </p>
+    <p class="fragment">
+        不纯函数需要尽可能地简单，而复杂的任务则交给纯函数去做。
+    </p>
+    <p class="fragment">
+        通过这种将不纯函数隔离、并尽可能简单化的编程风格，程序的漏洞将变得非常少。
+    </p>
+</section>
+<section>
+    <h1>追求“纯”的理由</h1>
+</section>
+<section>
+    <h5>可缓存性（Cacheable）</h5>
+    <p>纯函数总能够根据输入来做缓存。实现缓存的一种典型方式是 memoize 技术：</p>
+    <pre><code>
+var squareNumber  = memoize(function(x){ return x*x; });
+squareNumber(4);
+//=> 16
+squareNumber(4); // 从缓存中读取输入值为 4 的结果
+//=> 16
+squareNumber(5);
+//=> 25
+squareNumber(5); // 从缓存中读取输入值为 5 的结果
+//=> 25
+
+
+// 简单实现, 真实的代码可以查看: lodash.memoize
+var memoize = function(f) {
+  var cache = {};
+
+  return function() {
+    var arg_str = JSON.stringify(arguments);
+    cache[arg_str] = cache[arg_str] || f.apply(f, arguments);
+    return cache[arg_str];
+  };
+};
+    </code></pre>
+</section>
